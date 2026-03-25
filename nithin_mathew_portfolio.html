@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nithin Mathew — Equity Research & Valuation Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf8;
+  --bg-white: #ffffff;
+  --bg-warm: #f5f4f0;
+  --navy: #0f1a2e;
+  --navy-mid: #1e2d47;
+  --navy-light: #2c3e5a;
+  --accent: #1a5f4a;
+  --accent-light: #e8f2ee;
+  --gold: #b8924a;
+  --gold-light: #f7f0e3;
+  --text: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #8a8a8a;
+  --border: #e2e0db;
+  --border-light: #eeece7;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+/* === NAV === */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-light);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: var(--shadow-sm); }
+
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 2.5rem;
+  height: 64px; display: flex; justify-content: space-between; align-items: center;
+}
+
+.nav-logo {
+  font-family: 'EB Garamond', serif; font-size: 1.35rem; font-weight: 700;
+  color: var(--navy); text-decoration: none; letter-spacing: -0.3px;
+}
+
+.nav-links { display: flex; gap: 2.2rem; align-items: center; }
+
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none; font-size: 0.82rem;
+  font-weight: 500; letter-spacing: 0.3px; transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--navy); }
+
+.nav-cta-link {
+  background: var(--navy) !important; color: #fff !important;
+  padding: 0.5rem 1.4rem !important; border-radius: 6px; font-weight: 600 !important;
+  transition: background 0.25s, transform 0.2s !important;
+}
+.nav-cta-link:hover { background: var(--navy-mid) !important; transform: translateY(-1px); }
+
+.mobile-menu-btn {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 28px; height: 20px; position: relative;
+}
+.mobile-menu-btn span {
+  display: block; width: 100%; height: 2px; background: var(--navy);
+  position: absolute; left: 0; transition: all 0.3s;
+}
+.mobile-menu-btn span:nth-child(1) { top: 0; }
+.mobile-menu-btn span:nth-child(2) { top: 9px; }
+.mobile-menu-btn span:nth-child(3) { top: 18px; }
+
+/* === HERO === */
+.hero {
+  padding: 10rem 2.5rem 6rem; max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent-light); color: var(--accent);
+  padding: 0.4rem 1rem; border-radius: 4px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 1.8rem; animation: fadeIn 0.6s ease;
+}
+.hero-badge .pulse {
+  width: 7px; height: 7px; background: var(--accent); border-radius: 50%;
+  animation: pulseDot 2.5s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.hero h1 {
+  font-family: 'EB Garamond', serif; font-size: 3.6rem; font-weight: 700;
+  line-height: 1.12; color: var(--navy); margin-bottom: 1.2rem;
+  letter-spacing: -0.5px; animation: fadeInUp 0.7s ease;
+}
+
+.hero-subtitle {
+  font-size: 1.12rem; color: var(--text-secondary); font-weight: 400;
+  line-height: 1.75; max-width: 520px; margin-bottom: 2rem;
+  animation: fadeInUp 0.7s ease 0.1s backwards;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; margin-bottom: 3rem;
+  animation: fadeInUp 0.7s ease 0.2s backwards;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.8rem; border-radius: 6px; text-decoration: none;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.3px; transition: all 0.25s;
+}
+.btn-dark { background: var(--navy); color: #fff; }
+.btn-dark:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--navy); transform: translateY(-1px); }
+
+.hero-metrics {
+  display: flex; gap: 2.5rem; animation: fadeInUp 0.7s ease 0.3s backwards;
+}
+.metric { position: relative; padding-right: 2.5rem; }
+.metric::after {
+  content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 1px; height: 36px; background: var(--border);
+}
+.metric:last-child::after { display: none; }
+.metric:last-child { padding-right: 0; }
+.metric .value {
+  font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 700;
+  color: var(--navy); line-height: 1.1;
+}
+.metric .label {
+  font-size: 0.72rem; color: var(--text-muted); font-weight: 500;
+  letter-spacing: 0.5px; text-transform: uppercase; margin-top: 0.2rem;
+}
+
+/* Hero card */
+.hero-card {
+  background: var(--bg-white); border: 1px solid var(--border-light);
+  border-radius: 14px; padding: 2.2rem; box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.8s ease 0.3s backwards;
+}
+.hero-card-header {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.6rem;
+  padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-light);
+}
+.avatar {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-family: 'EB Garamond', serif; font-size: 1.4rem; font-weight: 700; color: #fff;
+}
+.hero-card-name { font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+.hero-card-role { font-size: 0.78rem; color: var(--text-muted); }
+.quick-facts { display: flex; flex-direction: column; gap: 0.75rem; }
+.quick-fact { display: flex; align-items: center; gap: 0.75rem; font-size: 0.84rem; color: var(--text-secondary); }
+.quick-fact .icon {
+  width: 32px; height: 32px; background: var(--bg-warm); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0;
+}
+.quick-fact strong { color: var(--text); font-weight: 600; }
+
+/* === SECTIONS === */
+.section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem; }
+.section-alt { background: var(--bg-white); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+.section-header { margin-bottom: 3rem; }
+.section-overline {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.5rem;
+}
+.section-title {
+  font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 700;
+  color: var(--navy); letter-spacing: -0.3px;
+}
+.section-divider { width: 40px; height: 3px; background: var(--gold); margin-top: 0.8rem; border-radius: 2px; }
+
+/* === EXPERIENCE === */
+.exp-entry {
+  display: grid; grid-template-columns: 200px 1fr; gap: 2.5rem;
+  padding: 2.2rem 0; border-bottom: 1px solid var(--border-light);
+  transition: background 0.3s;
+}
+.exp-entry:first-child { padding-top: 0; }
+.exp-entry:last-child { border-bottom: none; }
+.exp-entry:hover { background: rgba(245,244,240,0.5); margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; border-radius: 10px; }
+
+.exp-meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+  color: var(--text-muted); letter-spacing: 0.5px; padding-top: 0.3rem;
+}
+.exp-meta .company {
+  font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--accent);
+  font-size: 0.82rem; letter-spacing: 0; display: block; margin-bottom: 0.3rem;
+}
+.exp-meta .location { display: block; margin-top: 0.3rem; font-size: 0.72rem; }
+
+.exp-body h3 {
+  font-family: 'EB Garamond', serif; font-size: 1.35rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 0.8rem;
+}
+.exp-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-body li {
+  position: relative; padding-left: 1.1rem; font-size: 0.9rem;
+  color: var(--text-secondary); line-height: 1.65;
+}
+.exp-body li::before {
+  content: ''; position: absolute; left: 0; top: 0.65em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+}
+
+/* === SKILLS === */
+.skills-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.skill-block {
+  background: var(--bg-white); border: 1px solid var(--border-light);
+  border-radius: 10px; padding: 1.8rem; transition: transform 0.25s, box-shadow 0.25s;
+}
+.skill-block:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.skill-block-title {
+  font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 1rem; padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-light);
+}
+.skill-items { display: flex; flex-direction: column; gap: 0.5rem; }
+.skill-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); padding: 0.35rem 0; }
+.skill-item::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 2px; flex-shrink: 0; }
+
+/* === PROJECTS === */
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.project-card {
+  background: var(--bg-white); border: 1px solid var(--border-light);
+  border-radius: 10px; padding: 2rem; transition: transform 0.25s, box-shadow 0.25s; position: relative;
+}
+.project-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border); }
+.project-num {
+  font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 700;
+  color: var(--gold); opacity: 0.35; position: absolute; top: 1.2rem; right: 1.5rem; line-height: 1;
+}
+.project-card h3 {
+  font-family: 'EB Garamond', serif; font-size: 1.2rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 0.7rem; padding-right: 2rem;
+}
+.project-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.2rem; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.project-tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--text-muted);
+  background: var(--bg-warm); padding: 0.3rem 0.65rem; border-radius: 4px; letter-spacing: 0.3px;
+}
+
+/* === EDUCATION === */
+.edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.edu-card {
+  background: var(--bg-white); border: 1px solid var(--border-light);
+  border-radius: 10px; padding: 1.8rem; display: flex; gap: 1.2rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.edu-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.edu-year-bar { width: 4px; background: linear-gradient(to bottom, var(--navy), var(--accent)); border-radius: 2px; flex-shrink: 0; }
+.edu-card h3 { font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; }
+.edu-card .school { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; margin-bottom: 0.25rem; }
+.edu-card .period { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--text-muted); }
+.edu-card .focus { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem; }
+
+/* === CERTS === */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.cert-item {
+  background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 8px;
+  padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.8rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.cert-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.cert-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 2px; flex-shrink: 0; margin-top: 0.5rem; }
+.cert-item h4 { font-size: 0.85rem; font-weight: 600; color: var(--navy); line-height: 1.35; }
+.cert-item p { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+/* === CTA === */
+.cta {
+  background: var(--navy); padding: 5rem 2.5rem; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(26,95,74,0.2) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(184,146,74,0.15) 0%, transparent 50%);
+}
+.cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
+.cta h2 { font-family: 'EB Garamond', serif; font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; }
+.cta p { color: rgba(255,255,255,0.65); font-size: 1rem; margin-bottom: 2.2rem; line-height: 1.7; }
+.cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.btn-white {
+  background: #fff; color: var(--navy); padding: 0.8rem 2rem; border-radius: 6px;
+  text-decoration: none; font-weight: 600; font-size: 0.88rem;
+  transition: transform 0.25s, box-shadow 0.25s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+.btn-ghost {
+  background: transparent; color: #fff; padding: 0.8rem 2rem; border-radius: 6px;
+  text-decoration: none; font-weight: 600; font-size: 0.88rem;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  transition: border-color 0.25s, transform 0.25s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+
+/* === FOOTER === */
+footer {
+  max-width: 1200px; margin: 0 auto; padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: var(--text-muted);
+}
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* === ANIMATIONS === */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 8rem; }
+  .hero-card { max-width: 400px; }
+  .skills-layout { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .mobile-menu-btn { display: block; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
+    flex-direction: column; padding: 1.5rem 2rem; gap: 1rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-links.open { display: flex; }
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .hero h1 { font-size: 2.4rem; }
+  .hero-metrics { flex-wrap: wrap; gap: 1.5rem; }
+  .metric::after { display: none; }
+  .metric { padding-right: 0; }
+  .section { padding: 3.5rem 1.5rem; }
+  .section-title { font-size: 1.8rem; }
+  .exp-entry { grid-template-columns: 1fr; gap: 0.5rem; }
+  .skills-layout, .projects-grid, .edu-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn { justify-content: center; }
+  .cta { padding: 3.5rem 1.5rem; }
+  .cta h2 { font-size: 1.8rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Nithin Mathew</a>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta-link">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="pulse"></span> Available for Opportunities</div>
+    <h1>Equity Research &<br>Valuation Analyst</h1>
+    <p class="hero-subtitle">CFA Level I Candidate with expertise in financial modeling, ESG integration, and AI-driven valuation. Currently at NEOMA Business School pursuing an MSc in International Finance.</p>
+    <div class="hero-actions">
+      <a href="mailto:mathewnithin810@gmail.com" class="btn btn-dark">Contact Me</a>
+      <a href="https://www.linkedin.com/in/nithinmathewfrance" target="_blank" class="btn btn-outline">View LinkedIn</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric"><div class="value">20+</div><div class="label">Companies Analyzed</div></div>
+      <div class="metric"><div class="value">4</div><div class="label">Research Reports</div></div>
+      <div class="metric"><div class="value">50+</div><div class="label">Datasets Modeled</div></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-header">
+      <div class="avatar">NM</div>
+      <div><div class="hero-card-name">Nithin Mathew</div><div class="hero-card-role">Reims, France</div></div>
+    </div>
+    <div class="quick-facts">
+      <div class="quick-fact"><div class="icon">&#x1F3E2;</div><span><strong>Rikth Dutta Family Office</strong> — Analyst</span></div>
+      <div class="quick-fact"><div class="icon">&#x1F393;</div><span><strong>NEOMA Business School</strong> — MSc Finance</span></div>
+      <div class="quick-fact"><div class="icon">&#x1F4CA;</div><span><strong>CFA Level I</strong> Candidate</span></div>
+      <div class="quick-fact"><div class="icon">&#x1F310;</div><span><strong>English</strong> Native &middot; <strong>French</strong> Working</span></div>
+      <div class="quick-fact"><div class="icon">&#x1F4A1;</div><span>DCF &middot; ESG &middot; Python &middot; Bloomberg</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-alt">
+  <section class="section" id="experience">
+    <div class="section-header reveal"><div class="section-overline">Experience</div><div class="section-title">Professional Background</div><div class="section-divider"></div></div>
+    <div>
+      <div class="exp-entry reveal">
+        <div class="exp-meta"><span class="company">Rikth Dutta Family Office</span>Jan 2026 — Present<span class="location">Reims, France</span></div>
+        <div class="exp-body">
+          <h3>Equity Research & Valuation Analyst</h3>
+          <ul>
+            <li>Analyzed 10+ listed companies across multiple sectors, conducting fundamental research to identify investment opportunities</li>
+            <li>Built and applied DCF and comparable company analysis models to evaluate valuations and key value drivers</li>
+            <li>Delivered 4 detailed equity research reports providing valuation insights and supporting investment decisions</li>
+            <li>Tracked FMCG and automotive sectors, analyzing industry trends, competitive dynamics, and macro factors</li>
+            <li>Conducted ESG analysis by evaluating sustainability metrics and integrating findings into investment frameworks</li>
+            <li>Developed AI-driven Python models to assess risk and asset valuation across 50+ company datasets</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-entry reveal">
+        <div class="exp-meta"><span class="company">Lock Couture</span>Aug 2023 — Apr 2024<span class="location">Gujarat, India</span></div>
+        <div class="exp-body">
+          <h3>Founder</h3>
+          <ul>
+            <li>Founded and managed a clothing venture, overseeing end-to-end operations including product development, pricing, and sales</li>
+            <li>Generated revenue through D2C sales and social media marketing, building a customer base from scratch</li>
+            <li>Managed budgeting, cost control, and pricing decisions to maintain profitability across product lines</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-entry reveal">
+        <div class="exp-meta"><span class="company">All In Fabricators</span>Jun 2023 — Feb 2024<span class="location">Ankleshwar, India</span></div>
+        <div class="exp-body">
+          <h3>Site Engineer</h3>
+          <ul>
+            <li>Managed on-site operations and coordinated cross-functional teams for timely project execution</li>
+            <li>Optimized workflows and enhanced stakeholder communication, improving project efficiency</li>
+            <li>Applied analytical problem-solving to resolve operational challenges under tight deadlines</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="section" id="skills">
+  <div class="section-header reveal"><div class="section-overline">Expertise</div><div class="section-title">Skills & Competencies</div><div class="section-divider"></div></div>
+  <div class="skills-layout">
+    <div class="skill-block reveal">
+      <div class="skill-block-title">Valuation & Research</div>
+      <div class="skill-items">
+        <div class="skill-item">DCF Valuation</div>
+        <div class="skill-item">Comparable Company Analysis</div>
+        <div class="skill-item">Equity Research</div>
+        <div class="skill-item">Fixed Income Analysis</div>
+        <div class="skill-item">Investment Recommendations</div>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <div class="skill-block-title">Technical & Analytical</div>
+      <div class="skill-items">
+        <div class="skill-item">Python (AI/ML Models)</div>
+        <div class="skill-item">SQL & Data Engineering</div>
+        <div class="skill-item">Financial Modeling</div>
+        <div class="skill-item">Bloomberg Terminal</div>
+        <div class="skill-item">Advanced Excel</div>
+      </div>
+    </div>
+    <div class="skill-block reveal">
+      <div class="skill-block-title">Domain Knowledge</div>
+      <div class="skill-items">
+        <div class="skill-item">ESG & CSRD Analysis</div>
+        <div class="skill-item">FMCG Sector Coverage</div>
+        <div class="skill-item">Automotive Sector Coverage</div>
+        <div class="skill-item">Risk Assessment</div>
+        <div class="skill-item">Portfolio Strategy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-alt">
+  <section class="section" id="projects">
+    <div class="section-header reveal"><div class="section-overline">Selected Work</div><div class="section-title">Projects & Case Studies</div><div class="section-divider"></div></div>
+    <div class="projects-grid">
+      <div class="project-card reveal"><div class="project-num">01</div><h3>AI-Driven Risk & Asset Valuation</h3><p>Developed Python-based machine learning models to assess risk and value assets across 50+ companies, integrating quantitative techniques with traditional valuation frameworks.</p><div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">ML/AI</span><span class="project-tag">Risk Analysis</span><span class="project-tag">Valuation</span></div></div>
+      <div class="project-card reveal"><div class="project-num">02</div><h3>ESG Investment Framework</h3><p>Evaluated sustainability metrics across 10+ companies to build an ESG integration framework, aligning investment analysis with responsible investing principles and CSRD standards.</p><div class="project-tags"><span class="project-tag">ESG</span><span class="project-tag">CSRD</span><span class="project-tag">Sustainability</span><span class="project-tag">Research</span></div></div>
+      <div class="project-card reveal"><div class="project-num">03</div><h3>Sector Equity Research Reports</h3><p>Authored 4 comprehensive equity research reports on FMCG and automotive companies, covering competitive dynamics, macro factors, and valuations using DCF and comparable methods.</p><div class="project-tags"><span class="project-tag">DCF</span><span class="project-tag">Comps</span><span class="project-tag">FMCG</span><span class="project-tag">Automotive</span></div></div>
+      <div class="project-card reveal"><div class="project-num">04</div><h3>Wall Climbing & Cleaning Robot</h3><p>Published engineering research on an autonomous robotics system — demonstrating cross-disciplinary analytical thinking and technical rigor that transfers directly to quantitative finance.</p><div class="project-tags"><span class="project-tag">Robotics</span><span class="project-tag">Engineering</span><span class="project-tag">Publication</span></div></div>
+    </div>
+  </section>
+</div>
+
+<section class="section" id="education">
+  <div class="section-header reveal"><div class="section-overline">Education</div><div class="section-title">Academic Background</div><div class="section-divider"></div></div>
+  <div class="edu-grid">
+    <div class="edu-card reveal"><div class="edu-year-bar"></div><div><h3>Master in Management & MSc International Finance</h3><div class="school">NEOMA Business School</div><div class="period">Sep 2024 — Dec 2026</div><div class="focus">Specialization in Finance &middot; Reims, France</div></div></div>
+    <div class="edu-card reveal"><div class="edu-year-bar"></div><div><h3>Bachelor of Technology — Mechanical Engineering</h3><div class="school">Indus University, Ahmedabad</div><div class="period">Jul 2019 — May 2023</div><div class="focus">Analytical & quantitative foundations applied to finance</div></div></div>
+  </div>
+</section>
+
+<div class="section-alt">
+  <section class="section">
+    <div class="section-header reveal"><div class="section-overline">Credentials</div><div class="section-title">Certifications</div><div class="section-divider"></div></div>
+    <div class="cert-grid reveal">
+      <div class="cert-item"><div class="cert-dot"></div><div><h4>CFA Level I Candidate</h4><p>CFA Institute</p></div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><h4>Investment Banking Simulation</h4><p>JPMorgan Chase</p></div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><h4>ESG & CSRD Fundamentals</h4><p>Environmental Social Governance</p></div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><h4>Bloomberg Market Concepts</h4><p>Bloomberg LP</p></div></div>
+      <div class="cert-item"><div class="cert-dot"></div><div><h4>SQL for Data Engineering</h4><p>Data & Analytics</p></div></div>
+    </div>
+  </section>
+</div>
+
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <h2>Let's Discuss How<br>I Can Contribute</h2>
+    <p>Seeking roles in equity research, asset management, and investment analysis where I can deliver high-impact, data-driven insights.</p>
+    <div class="cta-buttons">
+      <a href="mailto:mathewnithin810@gmail.com" class="btn-white">&#9993;&nbsp; Email Me</a>
+      <a href="https://www.linkedin.com/in/nithinmathewfrance" target="_blank" class="btn-ghost">LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 Nithin Mathew</span>
+  <span>Reims, France &middot; <a href="mailto:mathewnithin810@gmail.com">mathewnithin810@gmail.com</a></span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20); });
+</script>
+</body>
+</html>
